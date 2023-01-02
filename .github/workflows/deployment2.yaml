@@ -1,0 +1,28 @@
+name: Deployment Exercise 1
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get Code
+          uses: actions/checkout@v3
+        - name: Test code
+          run: npm run test
+    
+    deploy:
+      runs-on:
+        - name: Get Code
+          uses: actions/checkout@v3
+        - name: Build Code
+          run: npm run build
+        - name: Deploy Code
+          run: echo "Deploying Code..."
